@@ -2,5 +2,5 @@ node_modules
 /coverage
 *.log
 *.env
-*.DS_Store
 package-lock.json
+yarn.lock
