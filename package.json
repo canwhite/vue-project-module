@@ -1,9 +1,9 @@
 {
-  "name": "uce-ued",
-  "version": "0.1.0",
+  "name": "vue-project",
+  "version": "0.0.1",
   "author": "向志安",
   "license": "MIT",
-  "description": "Learn Vue Easily",
+  "description": "Vue modular engineering and packaging",
   "main": "app.js",
   "scripts": {
     "clean": "rimraf dist",
