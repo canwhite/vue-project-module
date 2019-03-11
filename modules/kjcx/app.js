@@ -74,7 +74,7 @@ $("body").on("touchmove",function(){
  * h5和App交互
  */
 //本地调试数据
-/*store.state.userInfo.token = '3FD3BF8EAA4F7BDB8D3CDEDA0213666B';
+store.state.userInfo.token = '3FD3BF8EAA4F7BDB8D3CDEDA0213666B';
 store.state.userInfo.appId = '1130';
 store.state.userInfo.empCode = '021991';
 store.state.userInfo.orgId = '23987';
@@ -87,10 +87,10 @@ if(window.location.hash.indexOf('appId')!=-1){
 }
 store.state.urlParams = '?accessToken='+store.state.userInfo.token+'&accessCode='+store.state.userInfo.empCode+'&accessAppId='+appId;
 ystsdk.setStatusBarColor('a248ff',1);
-INIT_VUE();*/
+INIT_VUE();
 
 //从iso/Android获取登录信息
-ystsdk.userInfo(function(Data){
+/*ystsdk.userInfo(function(Data){
 	store.state.userInfo = Data;
 	//从收藏中心访问appId从地址中获取
 	if(window.location.hash.indexOf('appId')!=-1){
@@ -104,4 +104,4 @@ ystsdk.userInfo(function(Data){
 	ystsdk.setStatusBarColor('a248ff',1);
 	// init
 	INIT_VUE();
-})
+})*/
