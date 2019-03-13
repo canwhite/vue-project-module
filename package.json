@@ -4,6 +4,7 @@
   "author": "向志安",
   "license": "MIT",
   "description": "Vue modular engineering and packaging",
+  "gitHub":"https://github.com/kuaitanglang/vue-project",
   "main": "app.js",
   "scripts": {
     "clean": "rimraf dist",
@@ -101,7 +102,7 @@
   },
   "engines": {
     "node": ">= 6.0.0",
-    "npm": ">= 3.0.0"
+    "npm": ">= 5.0.0"
   },
   "browserList": [
     "> 1%",
