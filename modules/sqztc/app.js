@@ -56,7 +56,7 @@ function INIT_VUE(){
 }
 
 //本地调试数据
-store.state.userInfo.token = '3D2FD3A6AFE183F512E882DD2C36D4B6';
+/*store.state.userInfo.token = '3D2FD3A6AFE183F512E882DD2C36D4B6';
 store.state.userInfo.appId = '1297';
 store.state.userInfo.empCode = '021991';
 store.state.userInfo.empName = 'test';
@@ -69,11 +69,11 @@ if(window.location.hash.indexOf('appId')!=-1){
 store.state.urlParams = '?accessToken='+store.state.userInfo.token+'&accessCode='+store.state.userInfo.empCode+'&accessAppId='+appId;
 ystsdk.setStatusBarColor('a248ff',1);
 // init
-INIT_VUE();
+INIT_VUE();*/
 
 
 //从iso/Android获取登录信息
-/*ystsdk.userInfo(function(Data){
+ystsdk.userInfo(function(Data){
 	store.state.userInfo = Data;
 	//从收藏中心访问appId从地址中获取
 	if(window.location.hash.indexOf('appId')!=-1){
@@ -87,4 +87,4 @@ INIT_VUE();
 	ystsdk.setStatusBarColor('a248ff',1);
 	// init
 	INIT_VUE();
-})*/
+})

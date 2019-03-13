@@ -55,21 +55,21 @@ function INIT_VUE(){
 	}).$mount('#app');
 }
 
-store.state.userInfo.token = '3D2FD3A6AFE183F512E882DD2C36D4B6';
+/*store.state.userInfo.token = '3D2FD3A6AFE183F512E882DD2C36D4B6';
 store.state.userInfo.appId = '1130';
 store.state.userInfo.empCode = '021991';
 store.state.urlParams = '?accessToken='+store.state.userInfo.token+'&accessCode='+store.state.userInfo.empCode+'&accessAppId='+store.state.userInfo.appId;
 ystsdk.setStatusBarColor('a248ff',1);
 // init
-INIT_VUE();
+INIT_VUE();*/
 
 
 //从iso/Android获取登录信息
-/*ystsdk.userInfo(function(Data){
+ystsdk.userInfo(function(Data){
 	store.state.userInfo = Data;
 	store.state.urlParams = '?accessToken='+Data.token+'&accessCode='+Data.empCode+'&accessAppId='+Data.appId;
 	//修改系统状态栏
 	ystsdk.setStatusBarColor('a248ff',1);
 	// init
 	INIT_VUE();
-})*/
+})
