@@ -74,10 +74,10 @@ const router = new VueRouter({
 	mode: 'hash',
 	scrollBehavior (to, from, savePosition) {
 	 	if(savePosition) {
-      return savePosition;
-    }else{
-      return {x:0,y:0}
-    }
+	      return savePosition;
+	    }else{
+	      return {x:0,y:0}
+	    }
 	},
 	routes
 })

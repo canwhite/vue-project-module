@@ -28,7 +28,7 @@ module.exports = (env) => {
 	/*let random = parseInt(Math.random()*(9999-1000)+1000);*/
 	let abc = "abcdefghijklmnopqrstuvwxyz";
 	let initnum = 999;
-	'kjcx'.split('').forEach((item,index)=>{
+	entryDir.toString().split('').forEach((item,index)=>{
 		let num = abc.indexOf(item)+1;
 		initnum = (initnum+index)*num;
 	})
