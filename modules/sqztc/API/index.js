@@ -5,8 +5,17 @@ var BASE={};
 if(NODE_ENV == 'dev'){
 	BASE.baseURL = 'https://uwt.sit.uc56.com/uwt-app-web-main';
 }
+else if(NODE_ENV == 'sit'){
+	BASE.baseURL = 'https://uwt.sit.uc56.com/uwt-app-web-main';
+}
+else if(NODE_ENV == 'uat'){
+	BASE.baseURL = 'https://uwt.uat.uc56.com/uwt-app-web-main';
+}
+else if(NODE_ENV == 'prod'){
+	BASE.baseURL = 'https://uwt.uce.cn/uwt-app-web-main';
+}
 else if(NODE_ENV == 'production'){
-	BASE.baseURL = window.location.origin+'/uct-app-webapi';
+	BASE.baseURL = window.location.origin+'/uwt-app-web-main';
 }else{
 	console.error("环境参数baseURL错误！")
 }

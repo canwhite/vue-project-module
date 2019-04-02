@@ -6,6 +6,15 @@ var BASE={};
 if(NODE_ENV == 'dev'){
 	BASE.baseURL = 'https://uct.sit.uc56.com/uct-app-webapi';
 }
+else if(NODE_ENV == 'sit'){
+	BASE.baseURL = 'https://uct.sit.uc56.com/uct-app-webapi';
+}
+else if(NODE_ENV == 'uat'){
+	BASE.baseURL = 'https://uct.uat.uc56.com/uct-app-webapi';
+}
+else if(NODE_ENV == 'prod'){
+	BASE.baseURL = 'https://uct.uce.cn/uct-app-webapi';
+}
 else if(NODE_ENV == 'production'){
 	BASE.baseURL = window.location.origin+'/uct-app-webapi';
 }else{

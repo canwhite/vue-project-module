@@ -12,6 +12,16 @@
     "startdev": "webpack-dev-server --config build_config/webpack.dev.config.js -d --progress --hot --profile --env.NODE_ENV=dev",
     "build": "node ./build_config/config_bridge.js  buildserver",
     "startbuild": "webpack --config ./build_config/webpack.prod.config.js -p --hide-modules --progress --profile --colors --env.NODE_ENV=production",
+    
+    "sit": "node ./build_config/config_bridge.js  sitserver",
+    "startSit": "webpack --config ./build_config/webpack.prod.config.js -p --hide-modules --progress --profile --colors --env.NODE_ENV=sit",
+    "uat": "node ./build_config/config_bridge.js  uatserver",
+    "startUat": "webpack --config ./build_config/webpack.prod.config.js -p --hide-modules --progress --profile --colors --env.NODE_ENV=uat",
+    "prod": "node ./build_config/config_bridge.js  prodserver",
+    "startProd": "webpack --config ./build_config/webpack.prod.config.js -p --hide-modules --progress --profile --colors --env.NODE_ENV=prod",
+    
+    "alltask": "node ./build_config/config_bridge.js  allserver",
+    
     "start": "karma start test2/karma.conf.js",
     "unit": "karma start test/karma.conf.js --single-run"
   },

@@ -1,3 +1,5 @@
+import { MessageBox, Toast, Indicator} from 'mint-ui';
+
 var uceAMap = {};
 
 
@@ -59,6 +61,7 @@ function drawOrgRange(map, points, rangeColor, orgCode) {
  
 //显示网点名称
 function addRangeName(map, point, orgName, orgCode) {
+	// 创建标记
     var marker = new AMap.Marker({
         position: point,
         offset: new AMap.Pixel(-18, -30),
@@ -66,11 +69,16 @@ function addRangeName(map, point, orgName, orgCode) {
         bubble: true, //是否将覆盖物的鼠标或touch等事件冒泡到地图上
         icon: 'https://download.uce.cn/update/gis/prod/marker/marker_2.png'
     });
+    // 添加说明
     marker.setLabel({ //样式className为：amap-marker-label
-        offset: new AMap.Pixel(30, 20), //修改label相对于maker的位置
-        content: orgName + "(" + orgCode + ")"
+        offset: new AMap.Pixel(30, 5), //修改label相对于maker的位置
+        content: orgName + "(点击导航)"
     })
- 
+    //绑定事件
+    marker.on('click', function(e){
+    	//跳转原生导航
+    	window.location.href = "js://uct?method=getNavigationToDotAction&longitude="+point[0]+"&Latitude="+point[1]+"&targetName="+orgName;
+    });
 };
 
 /**
@@ -110,17 +118,20 @@ uceAMap.showOrgMap = function(params) {
     params.showToolbar = params.showToolbar != undefined ? params.showToolbar : true;
     params.rangeType = params.rangeType ? params.rangeType : 2;
     mapObject = new AMap.Map(mapContainerId, {
-        zoom: 5, //默认缩放级别
-        center: [107.404809, 34.596342], //地图默认中心点
+        zoom: 12, //默认缩放级别
+        center: [params.data.lng, params.data.lat], //地图默认中心点
         zooms: [3, 20], // 缩放界别范围
         scrollWheel: true, //滚动缩放
         expandZoomRange: true,
-        showIndoorMap: false //关闭自动展示室内地图
+        showIndoorMap: false,//关闭自动展示室内地图
+        resizeEnable: true
     });
     if(params.showToolbar) {
         AMap.plugin('AMap.ToolBar', function() {
             var toolbar = new AMap.ToolBar({
-                liteStyle: true
+                liteStyle: true,
+                position: 'RT',
+                offset: new AMap.Pixel(0, 20)
             });
             //添加缩放工具栏
             mapObject.addControl(toolbar)
@@ -145,6 +156,7 @@ uceAMap.showOrgMap = function(params) {
     }
     //调整地图显示范围
     mapObject.setFitView();
+    
 };
 
 export default uceAMap;

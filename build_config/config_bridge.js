@@ -49,10 +49,28 @@ let son = cprocess.exec(cmd, {'maxBuffer':200*1024} ,function(error, stdout, std
 
 let cmd;
 if(""+doType+"" == "devserver"){
-	cmd = 'npm run startdev -- --env.name=' + entryDir 
-}else{
-	cmd = 'rimraf dist/' +entryDir+ '&& npm run startbuild -- --env.name=' + entryDir 
+	cmd = 'npm run startdev -- --env.name=' + entryDir
 }
+if(""+doType+"" == "buildserver"){
+	cmd = 'rimraf dist/' +entryDir+ '&& npm run startbuild -- --env.name=' + entryDir
+}
+
+if(""+doType+"" == "sitserver"){
+	cmd = 'rimraf taskdist/sit/' +entryDir+ '&& npm run startSit -- --env.name=' + entryDir
+}
+if(""+doType+"" == "uatserver"){
+	cmd = 'rimraf taskdist/uat/' +entryDir+ '&& npm run startUat -- --env.name=' + entryDir
+}
+if(""+doType+"" == "prodserver"){
+	cmd = 'rimraf taskdist/prod/' +entryDir+ '&& npm run startProd -- --env.name=' + entryDir
+}
+if(""+doType+"" == "allserver"){
+	let task1 = 'rimraf taskdist/sit/' +entryDir+ '&& npm run startSit -- --env.name=' + entryDir
+	let task2 = 'rimraf taskdist/uat/' +entryDir+ '&& npm run startUat -- --env.name=' + entryDir
+	let task3 = 'rimraf taskdist/prod/' +entryDir+ '&& npm run startProd -- --env.name=' + entryDir
+	cmd = task1 +"&& "+ task2 +"&& "+ task3
+}
+console.log(cmd)
 
 let son = cprocess.spawn('cmd.exe', ['/s', '/c', cmd]);
 son.stdout.on('data', function(data) {

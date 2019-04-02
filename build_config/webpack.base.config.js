@@ -16,6 +16,9 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 // init object
 //To use the env variable, you must convert module.exports to a function
 module.exports = (env) => {
+	console.log(env.NODE_ENV)
+	console.log(env.name)
+	
 	let entryDir = env.name;//入口目录
 	
 	var webpackConfig ={};
@@ -26,8 +29,12 @@ module.exports = (env) => {
 	};
 	
 	// output
+	let output = "dist";
+	if(env.NODE_ENV=="sit")output="taskdist/sit";
+	if(env.NODE_ENV=="uat")output="taskdist/uat";
+	if(env.NODE_ENV=="prod")output="taskdist/prod";
 	webpackConfig.output = {
-	  path: path.resolve(__dirname, '../dist/'+entryDir),
+	  path: path.resolve(__dirname, '../'+ output +'/'+entryDir),
 	  publicPath: '',
 	  filename: '[name].[hash:8].js',
 	  chunkFilename:'js/[name].[chunkhash:8].chunk.js'
@@ -87,7 +94,7 @@ module.exports = (env) => {
 	      test: /\.(png|jpg|jpeg|gif)$/,
 	      loader: 'url-loader',
 	      options:{
-	      	limit:8192,
+	      	limit:20000,
 	      	//name:'images/[name].[hash:8].[ext]',
 	      	name:'static/images/[name].[ext]'
 	      }

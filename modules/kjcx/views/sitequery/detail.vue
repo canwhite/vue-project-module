@@ -11,8 +11,7 @@
 		<div class="back-panel"></div>
 		<div class="star-real" v-show="animateFlag" :class=" 'animate-star'+ animateIndex"></div>
 		<div class="back-img">
-			<img id="back-img" v-if="webSiteInfo.qulityStar!=null" src="../../static/images/bg_img1.png" />
-			<img id="back-img" v-if="webSiteInfo.qulityStar==null" src="../../static/images/bg_img2.jpg"/>
+			<img id="back-img" :src="bg_img"/>
 		</div>
 		<div class="site-star">
 			<div class="star-info" v-if="showStar">
@@ -150,13 +149,14 @@
 	  	return {
 	  		styles:{
 	  			'background-color':'#transparent',
-	  			'background-image': "url(static/images/bg_img1.png)",
+	  			'background-image': "url("+ require('@entry/static/images/bg_img1.png') +")",
 				'background-repeat': 'no-repeat',
 				'background-size': '100%',
 	  			'color':'#fff'
   			},
 	  		baseOrgCode: this.$route.params.baseOrgCode,
 	  		cmsOrgId: this.$route.params.cmsOrgId,
+	  		bg_img :"",
 	  		showStar:false,
 	  		showNullStar:false,
 	  		webSiteInfo:{
@@ -182,9 +182,15 @@
   					if(that.webSiteInfo.qulityStar){
   						that.showStar = true;
   						that.showNullStar = false;
+  						that.bg_img = require("@entry/static/images/bg_img1.png");
+  						that.animateFlag = true;
+		       			setTimeout(function(){
+		       				that.animateIndex = Math.floor(that.webSiteInfo.qulityScore/1000*13);
+		       			},500)
   					}else{
   						that.showStar = false;
   						that.showNullStar = true;
+  						that.bg_img = require("@entry/static/images/bg_img2.jpg");
   					}
   					
   					//拨打电话
@@ -197,14 +203,7 @@
   					that.webSiteInfo.businessScopes.forEach(item=>{
   						that.businessReal.push(item.productName);
   					})
-  					
-			       	
-		       		if(document.querySelectorAll("#back-img")[0].height>0){
-		       			that.animateFlag = true;
-		       			setTimeout(function(){
-		       				that.animateIndex = Math.floor(that.webSiteInfo.qulityScore/1000*13);
-		       			},500)
-		       		}
+		       		
   				}else{
   					that.webSiteInfo = {};
   				}
